@@ -32,5 +32,18 @@ public class CarparkTest {
         assertTrue("createdaparkinglotwith6slots".equalsIgnoreCase(outContent.toString().trim().replace(" ", "")));
         
     }
+	
+	@Test
+    public void park() throws Exception {
+        carpark.park("KA-01-BB-0001", "Black");
+        carpark.park("KA-01-HH-2701", "Blue");
+        assertEquals("Parkinglothasnotbeencreated\n" +
+                "\n" +
+                "Parkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
+        carpark.create_parking_lot("6");
+        carpark.park("KA-01-BB-0001", "Black");
+        carpark.park("KA-01-HH-2701", "Blue");
+        assertEquals(4, carpark.list_of_available_slots.size());
+    }
 
 }

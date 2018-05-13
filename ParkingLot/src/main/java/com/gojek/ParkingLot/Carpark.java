@@ -37,5 +37,9 @@ public class Carpark {
 		System.out.println("Created a parking lot with " +size + " slots");
 		System.out.println();
     }
+    
+    public void park(String regNo, String colour) {
+    
+    }
 
 }
