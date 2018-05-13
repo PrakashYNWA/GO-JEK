@@ -49,7 +49,7 @@ public class CarparkTest {
 	@Test
     public void leave() throws Exception {
         carpark.leave("2");
-        assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
+        assertEquals("Parkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
         carpark.create_parking_lot("6");
         carpark.park("KA-01-BB-0001", "Black");
         carpark.park("KA-01-HH-2701", "Blue");
@@ -68,12 +68,12 @@ public class CarparkTest {
 	@Test
     public void status() throws Exception {
         carpark.status();
-        assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
+        assertEquals("Parkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
         carpark.create_parking_lot("6");
         carpark.park("KA-01-HH-1234", "White");
         carpark.park("KA-01-HH-9999", "White");
         carpark.status();
-        assertEquals("Sorry,parkinglotisnotcreated\n" +
+        assertEquals("Parkinglothasnotbeencreated\n" +
                 "\n" +
                 "Createdparkinglotwith6slots\n" +
                 "\n" +

@@ -113,7 +113,30 @@ public class Carpark {
     }
     
     public void status() {
-    	
+    	 
+    	if (this.MAX_SIZE == 0) {
+             System.out.println("Parking lot has not been created");
+             System.out.println();
+         } 
+         
+         else if (this.slot_to_car.size() > 0) {
+             
+             System.out.println("Slot No.\tRegistration No.\tColor");
+             Car car;
+             for (int i = 1; i <= this.MAX_SIZE; i++) {
+                 String key = Integer.toString(i);
+                 if (this.slot_to_car.containsKey(key)) {
+                     car = this.slot_to_car.get(key);
+                     System.out.println(i + "\t" + car.regNo + "\t" + car.colour);
+                 }
+             }
+             System.out.println();
+         } 
+         
+         else {
+             System.out.println("Parking lot is empty");
+             System.out.println();
+         }
     }
 
 }
