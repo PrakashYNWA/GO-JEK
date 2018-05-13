@@ -11,12 +11,12 @@ public class Commands {
     public Commands() {
         commandsMap = new HashMap<String, Method>();
         try {
-            populateCommandsHashMap();
+        	insert_into_CommandsMap();
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
     }
-    private void populateCommandsHashMap() throws NoSuchMethodException {
+    private void insert_into_CommandsMap() throws NoSuchMethodException {
     	 
     	commandsMap.put("create_parking_lot", Carpark.class.getMethod("create_parking_lot", String.class));
          commandsMap.put("park", Carpark.class.getMethod("park", String.class, String.class));
