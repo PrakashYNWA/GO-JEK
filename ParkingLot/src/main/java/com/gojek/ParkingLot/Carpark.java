@@ -141,6 +141,27 @@ public class Carpark {
     
     public void registration_numbers_for_cars_with_colour(String colour) {
     	
+    	if (this.MAX_SIZE == 0) {
+            System.out.println("Parking lot has not been created");
+            System.out.println();
+        } 
+        
+        else if (this.colour_to_reg.containsKey(colour)) {
+            ArrayList<String> regNoList = this.colour_to_reg.get(colour);
+            System.out.println();
+            for (int i=0; i < regNoList.size(); i++) {
+                if (!(i==regNoList.size() - 1)){
+                    System.out.print(regNoList.get(i) + ",");
+                } else {
+                    System.out.print(regNoList.get(i));
+                }
+            }
+        } 
+        
+        else {
+            System.out.println("Not found");
+            System.out.println();
+        }
     }
 
 }
