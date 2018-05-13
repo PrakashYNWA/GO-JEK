@@ -22,14 +22,13 @@ public class ParseInputsTest {
     public void cleanUpStreams() {
         System.setOut(null);
     }
+    
     @Test
     public void parseTextInput() throws Exception {
-    	parseInputs.parseTextInput("test");
-        assertEquals("Invalidinput", outContent.toString().trim().replace(" ", ""));
-        parseInputs.parseTextInput("leave3");
-        assertEquals("Invalidinput\nParkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
-        parseInputs.parseTextInput("create_parking_lot6");
-        assertTrue("createdaparkinglotwith6slots".equalsIgnoreCase(outContent.toString().trim().replace(" ", "")));
+ 
+        parseInputs.parseTextInput("leave 1");
+        assertEquals("Parkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
+       
     }
 
 }
