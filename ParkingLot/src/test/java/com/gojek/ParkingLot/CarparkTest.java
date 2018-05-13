@@ -56,7 +56,7 @@ public class CarparkTest {
         carpark.leave("4");
         assertEquals("Parkinglothasnotbeencreated\n" +
                 "\n" +
-                "Createdparkinglotwith6slots\n" +
+                "Createdaparkinglotwith6slots\n" +
                 "\n" +
                 "Allocatedslotnumber:1\n" +
                 "\n" +
@@ -75,15 +75,46 @@ public class CarparkTest {
         carpark.status();
         assertEquals("Parkinglothasnotbeencreated\n" +
                 "\n" +
+                "Createdaparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "SlotNo.\tRegistrationNo.\tColour\n" +
+                "1\tKA-01-HH-1234\tWhite\n" +
+                "2\tKA-01-HH-9999\tWhite", outContent.toString().trim().replace(" ", ""));
+    }
+	
+	@Test
+    public void registration_numbers_for_cars_with_colour() throws Exception {
+        carpark.registration_numbers_for_cars_with_colour("White");
+        assertEquals("Parkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
+        carpark.create_parking_lot("6");
+        carpark.park("KA-01-HH-1234", "White");
+        carpark.park("KA-01-HH-9999", "White");
+        carpark.registration_numbers_for_cars_with_colour("White");
+        assertEquals("Parkinglothasnotbeencreated" +
+                "\n" +
+                "Createdaparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "\n" +
+                "KA-01-HH-1234,KA-01-HH-9999", outContent.toString().trim().replace(" ", ""));
+        carpark.registration_numbers_for_cars_with_colour("Gold");
+        assertEquals("Parkinglothasnotbeencreated" +
+                "\n" +
                 "Createdparkinglotwith6slots\n" +
                 "\n" +
                 "Allocatedslotnumber:1\n" +
                 "\n" +
                 "Allocatedslotnumber:2\n" +
                 "\n" +
-                "SlotNo.\tRegistrationNo.\tColor\n" +
-                "1\tKA-01-HH-1234\tWhite\n" +
-                "2\tKA-01-HH-9999\tWhite", outContent.toString().trim().replace(" ", ""));
+                "\n" +
+                "KA-01-HH-1234,KA-01-HH-9999Notfound", outContent.toString().trim().replace(" ", ""));
     }
 
 }

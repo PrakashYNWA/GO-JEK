@@ -121,7 +121,7 @@ public class Carpark {
          
          else if (this.slot_to_car.size() > 0) {
              
-             System.out.println("Slot No.\tRegistration No.\tColor");
+             System.out.println("Slot No.\tRegistration No.\tColour");
              Car car;
              for (int i = 1; i <= this.MAX_SIZE; i++) {
                  String key = Integer.toString(i);
@@ -137,6 +137,10 @@ public class Carpark {
              System.out.println("Parking lot is empty");
              System.out.println();
          }
+    }
+    
+    public void registration_numbers_for_cars_with_colour(String colour) {
+    	
     }
 
 }
