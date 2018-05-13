@@ -163,5 +163,9 @@ public class Carpark {
             System.out.println();
         }
     }
+    
+    public void slot_numbers_for_cars_with_colour(String color) {
+    	
+    }
 
 }

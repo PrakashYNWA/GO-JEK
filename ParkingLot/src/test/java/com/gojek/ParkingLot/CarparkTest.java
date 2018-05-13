@@ -116,5 +116,37 @@ public class CarparkTest {
                 "\n" +
                 "KA-01-BB-0001,KA-01-HH-3141Notfound", outContent.toString().trim().replace(" ", ""));
     }
+	
+	@Test
+    public void slot_numbers_for_cars_with_colour() throws Exception {
+        carpark.slot_numbers_for_cars_with_colour("Black");
+        assertEquals("Parkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
+        carpark.create_parking_lot("6");
+        carpark.park("KA-01-BB-0001", "Black");
+        carpark.park("KA-01-HH-3141", "Black");
+        carpark.slot_numbers_for_cars_with_colour("Black");
+        assertEquals("Parkinglothasnotbeencreated\n" +
+                "\n" +
+                "Createdaparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "\n" +
+                "1,2", outContent.toString().trim().replace(" ", ""));
+        carpark.slot_numbers_for_cars_with_colour("Gold");
+        assertEquals("Parkinglothasnotbeencreated\n" +
+                "\n" +
+                "Createdaparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "\n" +
+                "1,2\n" +
+                "Notfound", outContent.toString().trim().replace(" ", ""));
+    }
 
 }
