@@ -76,5 +76,9 @@ public class Carpark {
         }
     
     }
+    
+    public void leave(String slotNo) {
+    	
+    }
 
 }
