@@ -164,7 +164,35 @@ public class Carpark {
         }
     }
     
-    public void slot_numbers_for_cars_with_colour(String color) {
+    public void slot_numbers_for_cars_with_colour(String colour) {
+    	
+    	if (this.MAX_SIZE == 0) {
+            System.out.println("Parking lot has not been created");
+            System.out.println();
+        } 
+        
+        else if (this.colour_to_reg.containsKey(colour)) {
+            ArrayList<String> regNoList = this.colour_to_reg.get(colour);
+            ArrayList<Integer> slotList = new ArrayList<Integer>();
+            System.out.println();
+            for (int i=0; i < regNoList.size(); i++) {
+                slotList.add(Integer.valueOf(this.reg_to_slot.get(regNoList.get(i))));
+            }
+            Collections.sort(slotList);
+            for (int j=0; j < slotList.size(); j++) {
+                if (!(j == slotList.size() - 1)) {
+                    System.out.print(slotList.get(j) + ",");
+                } else {
+                    System.out.print(slotList.get(j));
+                }
+            }
+            System.out.println();
+        } 
+        
+        else {
+            System.out.println("Not found");
+            System.out.println();
+        }
     	
     }
 
