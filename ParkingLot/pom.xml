@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <log4j.version>1.2.17</log4j.version>
   </properties>
 
   <dependencies>
@@ -21,5 +22,34 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
   </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+				  <!-- DO NOT include log4j.properties file in your Jar -->
+				  <excludes>
+					<exclude>**/log4j.properties</exclude>
+				  </excludes>
+				  <archive>
+					<manifest>
+						<!-- Jar file entry point -->
+						<mainClass>com.gojek.ParkingLot.Main</mainClass>
+					</manifest>
+				  </archive>
+				</configuration>
+			</plugin>
+  	</plugins>
+  </build>
+
+  
 </project>
