@@ -148,5 +148,51 @@ public class CarparkTest {
                 "1,2\n" +
                 "Notfound", outContent.toString().trim().replace(" ", ""));
     }
+	
+	@Test
+    public void slot_number_for_registration_number() throws Exception {
+        carpark.slot_number_for_registration_number("KA-01-BB-0001");
+        assertEquals("Parkinglothasnotbeencreated", outContent.toString().trim().replace(" ", ""));
+        carpark.create_parking_lot("6");
+        carpark.park("KA-01-BB-0001", "Black");
+        carpark.park("KA-01-HH-3141", "Black");
+        carpark.slot_number_for_registration_number("KA-01-BB-0001");
+        assertEquals("Parkinglothasnotbeencreated\n" +
+                "\n" +
+                "Createdaparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "1", outContent.toString().trim().replace(" ", ""));
+        carpark.slot_number_for_registration_number("KA-01-HH-3141");
+        assertEquals("Parkinglothasnotbeencreated\n" +
+                "\n" +
+                "Createdaparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "1\n" +
+                "2", outContent.toString().trim().replace(" ", ""));
+        carpark.leave("1");
+        carpark.slot_number_for_registration_number("KA-01-BB-0001");
+        assertEquals("Parkinglothasnotbeencreated\n" +
+                "\n" +
+                "Createdaparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "1\n" +
+                "2\n" +
+                "Slotnumber1isfree\n" +
+                "\n" +
+                "Notfound", outContent.toString().trim().replace(" ", ""));
+    }
+
 
 }

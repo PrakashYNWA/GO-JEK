@@ -196,5 +196,9 @@ public class Carpark {
         }
     	
     }
+    
+    public void slot_number_for_registration_number(String regNo) {
+    	
+    }
 
 }
