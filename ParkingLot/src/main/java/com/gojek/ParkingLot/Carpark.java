@@ -79,6 +79,41 @@ public class Carpark {
     
     public void leave(String slotNo) {
     	
+    	if (this.MAX_SIZE == 0) {
+            System.out.println("Parking lot has not been created");
+            System.out.println();
+        } 
+        
+        else if (this.slot_to_car.size() > 0) {
+            Car leaving_car = this.slot_to_car.get(slotNo);
+            if (leaving_car != null) {
+                this.slot_to_car.remove(slotNo);
+                this.reg_to_slot.remove(leaving_car.regNo);
+                ArrayList<String> regNoList = this.colour_to_reg.get(leaving_car.colour);
+                if (regNoList.contains(leaving_car.regNo)) {
+                    regNoList.remove(leaving_car.regNo);
+                }
+                
+                this.list_of_available_slots.add(Integer.parseInt(slotNo));
+                System.out.println("Slot number " + slotNo + " is free");
+            } 
+            
+            else {
+                System.out.println("Slot number " + slotNo + " is already empty");
+                System.out.println();
+            }
+        } 
+        
+        else {
+            System.out.println("Parking lot is empty");
+            System.out.println();
+        }
+
+    	
+    }
+    
+    public void status() {
+    	
     }
 
 }

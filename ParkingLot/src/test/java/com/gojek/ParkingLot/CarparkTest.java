@@ -64,5 +64,26 @@ public class CarparkTest {
                 "\n" +
                 "Slotnumber4isalreadyempty", outContent.toString().trim().replace(" ", ""));
     }
+	
+	@Test
+    public void status() throws Exception {
+        carpark.status();
+        assertEquals("Sorry,parkinglotisnotcreated", outContent.toString().trim().replace(" ", ""));
+        carpark.create_parking_lot("6");
+        carpark.park("KA-01-HH-1234", "White");
+        carpark.park("KA-01-HH-9999", "White");
+        carpark.status();
+        assertEquals("Sorry,parkinglotisnotcreated\n" +
+                "\n" +
+                "Createdparkinglotwith6slots\n" +
+                "\n" +
+                "Allocatedslotnumber:1\n" +
+                "\n" +
+                "Allocatedslotnumber:2\n" +
+                "\n" +
+                "SlotNo.\tRegistrationNo.\tColor\n" +
+                "1\tKA-01-HH-1234\tWhite\n" +
+                "2\tKA-01-HH-9999\tWhite", outContent.toString().trim().replace(" ", ""));
+    }
 
 }
