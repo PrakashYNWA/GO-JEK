@@ -177,6 +177,7 @@ public class Carpark {
             System.out.println();
             for (int i=0; i < regNoList.size(); i++) {
                 slotList.add(Integer.valueOf(this.reg_to_slot.get(regNoList.get(i))));
+                
             }
             Collections.sort(slotList);
             for (int j=0; j < slotList.size(); j++) {
