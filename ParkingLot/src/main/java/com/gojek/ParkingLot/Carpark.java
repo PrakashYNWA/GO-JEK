@@ -96,6 +96,7 @@ public class Carpark {
                 
                 this.list_of_available_slots.add(Integer.parseInt(slotNo));
                 System.out.println("Slot number " + slotNo + " is free");
+                System.out.println();
             } 
             
             else {
@@ -199,6 +200,15 @@ public class Carpark {
     
     public void slot_number_for_registration_number(String regNo) {
     	
+    	  if (this.MAX_SIZE == 0) {
+              System.out.println("Parking lot has not been created");
+              System.out.println();
+          } else if (this.reg_to_slot.containsKey(regNo)) {
+              System.out.println(this.reg_to_slot.get(regNo));
+          } else {
+              System.out.println("Not found");
+              System.out.println();
+          }
     }
 
 }
