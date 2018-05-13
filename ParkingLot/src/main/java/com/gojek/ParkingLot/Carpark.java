@@ -1,6 +1,7 @@
 package com.gojek.ParkingLot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +40,40 @@ public class Carpark {
     }
     
     public void park(String regNo, String colour) {
+    	
+    	if (this.MAX_SIZE == 0) {
+            System.out.println("Parking lot has not been created");
+            System.out.println();
+        } 
+        
+        else if (this.slot_to_car.size() == this.MAX_SIZE) {
+            System.out.println("Sorry, parking lot is full");
+            System.out.println();
+        } 
+        
+        else {
+            Collections.sort(list_of_available_slots);
+            String slot = list_of_available_slots.get(0).toString();
+            Car car = new Car(regNo, colour);
+            this.slot_to_car.put(slot, car);
+            this.reg_to_slot.put(regNo, slot);
+   
+            if (this.colour_to_reg.containsKey(colour)) {
+                ArrayList<String> regNoList = this.colour_to_reg.get(colour);
+                this.colour_to_reg.remove(colour);
+                regNoList.add(regNo);
+                this.colour_to_reg.put(colour, regNoList);
+            } 
+            
+            else {
+                ArrayList<String> regNoList = new ArrayList<String>();
+                regNoList.add(regNo);
+                this.colour_to_reg.put(colour, regNoList);
+            }
+            System.out.println("Allocated slot number: " + slot);
+            System.out.println();
+            list_of_available_slots.remove(0);
+        }
     
     }
 
