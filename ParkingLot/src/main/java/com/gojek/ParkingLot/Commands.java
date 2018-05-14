@@ -16,6 +16,8 @@ public class Commands {
             e.printStackTrace();
         }
     }
+    
+    //Map to include the various input commands to their methods
     private void insert_into_CommandsMap() throws NoSuchMethodException {
     	 
     	commandsMap.put("create_parking_lot", Carpark.class.getMethod("create_parking_lot", String.class));

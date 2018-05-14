@@ -13,8 +13,8 @@ public class Main {
             case 0:
                 System.out.println("Please enter 'quit' to quit");
                 System.out.println("Waiting for input...");
-                // Interactive command-line input/output
-                // Run an infinite loop
+                // Run infinite loop for Interactive shell
+               
                 for (;;) {
                     try {
                         BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
@@ -33,7 +33,7 @@ public class Main {
                 }
                 break;
             case 1:
-                // File input/output
+                // Case when input is a file
             	parseInputs.parseFileInput(args[0]);
                 break;
             default:

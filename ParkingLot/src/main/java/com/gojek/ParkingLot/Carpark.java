@@ -20,6 +20,7 @@ public class Carpark {
     
     public void create_parking_lot(String size){
     	try{
+    		//setting the max size parking lot can fit
 			this.MAX_SIZE = Integer.parseInt(size);
 		}
 		catch (Exception e){
@@ -52,6 +53,7 @@ public class Carpark {
         } 
         
         else {
+        	//slotting car into available slots
             Collections.sort(list_of_available_slots);
             String slot = list_of_available_slots.get(0).toString();
             Car car = new Car(regNo, colour);
@@ -85,6 +87,7 @@ public class Carpark {
         } 
         
         else if (this.slot_to_car.size() > 0) {
+        	//remove car from the 2 mappings
             Car leaving_car = this.slot_to_car.get(slotNo);
             if (leaving_car != null) {
                 this.slot_to_car.remove(slotNo);
@@ -146,7 +149,7 @@ public class Carpark {
             System.out.println("Parking lot has not been created");
             System.out.println();
         } 
-        
+        //Get list of cars by searching for key of the specified colour
         else if (this.colour_to_reg.containsKey(colour)) {
             ArrayList<String> regNoList = this.colour_to_reg.get(colour);
             System.out.println();
@@ -171,7 +174,8 @@ public class Carpark {
             System.out.println("Parking lot has not been created");
             System.out.println();
         } 
-        
+    	//Get list of cars by searching for key of the specified colour
+    	//Then get slots with that reg nos
         else if (this.colour_to_reg.containsKey(colour)) {
             ArrayList<String> regNoList = this.colour_to_reg.get(colour);
             ArrayList<Integer> slotList = new ArrayList<Integer>();

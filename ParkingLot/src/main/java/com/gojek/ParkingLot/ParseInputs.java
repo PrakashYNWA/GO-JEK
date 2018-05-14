@@ -18,6 +18,8 @@ public class ParseInputs {
     }
     
     public void parseTextInput(String inputString) {
+    	
+    	//parse input strings if inputs keyed in at the interactive shell
     	String[] inputs = inputString.split(" ");
         switch (inputs.length) {
             case 1:
@@ -70,6 +72,7 @@ public class ParseInputs {
     
     public void parseFileInput(String filePath) {
        
+    	//parse the input strings if input is a file
         File inputFile = new File(filePath);
         try {
             BufferedReader br = new BufferedReader(new FileReader(inputFile));
