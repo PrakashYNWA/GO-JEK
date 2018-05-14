@@ -3,8 +3,8 @@ Carpark App
 
 #Requirements
 1. Maven installed
-2. chmod script before running
 
 #Instructions
 1. cd to parkinglot folder
-2. run script with or without file_inputs.txt
+2. run parking_lot script with or without file_inputs.txt
+3. cd to .git subfolder(hidden) to view Metadata
